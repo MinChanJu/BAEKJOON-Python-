@@ -1,4 +1,26 @@
-a = [1,4,4]
+import sys
+input = sys.stdin.read
 
-b = 5
-print(f"{a:>b}")
+def solve():
+    n = int(input().strip())
+    
+    for i in range(1, n):
+        print(f"? {i}")
+        sys.stdout.flush()
+        response1 = int(input().strip())
+        
+        print(f"? {i+1}")
+        sys.stdout.flush()
+        response2 = int(input().strip())
+        
+        if response1 == 0 and response2 == 1:
+            print(f"! {i}")
+            sys.stdout.flush()
+            return
+    
+    # 조건을 만족하는 (i, i+1) 쌍이 없는 경우
+    print("! -1")
+    sys.stdout.flush()
+
+if __name__ == "__main__":
+    solve()
